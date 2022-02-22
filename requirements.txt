@@ -1,0 +1,11 @@
+# Function dependencies, for example:
+# package>=version
+requests==2.20.0
+urllib3
+pandas
+#pandas.io.json 
+json_normalize
+datetime
+gspread
+df2gspread
+#oauth2client.service_account
