@@ -1,3 +1,8 @@
+"""This code can be copied and pasted into a Google Cloud Function with the following minor edits:
+	- change function arguments to (event,context)
+	- remove the if __name__ = "__main__" statement at the end of the code
+"""
+
 import requests
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -16,9 +21,9 @@ def stravaapi():
 	activities_url = "https://www.strava.com/api/v3/athlete/activities"
 
 	payload = {
-		'client_id': "75921",
-		'client_secret': 'e4136ccfc4728161dd3d3923e8bcba413239c7af',
-		'refresh_token': 'a11b0d62b35d73a413f9fb1b1def015b4e0b6046',
+		'client_id': "YOUR_CLIENT_ID",
+		'client_secret': 'YOUR_CLIENT_SECRET',
+		'refresh_token': 'YOUR_REFRESH_TOKEN',
 		'grant_type': "refresh_token",
 		'f': 'json'
 	}
@@ -26,7 +31,7 @@ def stravaapi():
 	# scope and credentials for uploading to google sheets
 	scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 	spreadsheet_key = '1bBSRKEOt_pPgomgLxeHUeooXEhItAIws8DZ5xC19hnw'
-	jsonfilename = 'jsonFileFromGoogle.json'
+	jsonfilename = 'jsonFileFromGoogle.json'  #separate file with credentials
 
 	res = requests.post(auth_url, data=payload, verify=False)
 	access_token = res.json()['access_token']
